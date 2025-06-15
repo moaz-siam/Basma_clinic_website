@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+@theme {
+  --color-Basic: #4535C1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    @apply opacity-0 translate-y-4;
+    animation: fadeInUp 0.4s ease forwards;
+  }
+
+  .animate-pop {
+    animation: popIn 0.4s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes popIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+@layer utilities {
+  .shadow-custom {
+    box-shadow: 0px 4px 25px 0px #A1A1A11A;
+  }
+}
+
+
+html {
+  direction: rtl;
+  font-family: "Tajawal", sans-serif;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  background-color: #FAFAFA;
+}
+
+.scrolled {
+  animation: headerScrolled 0.5s ease;
+  z-index: 100;
+}
+
+.hederAnim {
+  animation: hederAnim 0.5s ease;
+  z-index: 100;
+}
+
+.filterAnim {
+  animation: filterAnim 0.5s ease;
+  z-index: 100;
+}
+
+/* Keyframes for fadeInDown animation */
+@keyframes headerScrolled {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes hederAnim {
+  from {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes filterAnim {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+div[id^=custom-pagination] .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #a0aec0;
+  opacity: 1;
+  transition: background-color 0.3s;
+}
+
+div[id^=custom-pagination] .swiper-pagination-bullet-active {
+  background-color: #4535C1;
+  width: 14px;
+  height: 14px;
+}
+
+/* .auth-img {
+  background-image: url('../assets/backgroundauth.png');
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+} */
+
+/* From Uiverse.io by JaydipPrajapati1910 */
+.loader {
+  display: block;
+  --height-of-loader: 4px;
+  --loader-color: #4535C1;
+  width: 150px;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  background: var(--loader-color);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+  animation: moving 1s ease-in-out infinite;
+  ;
+}
+
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
